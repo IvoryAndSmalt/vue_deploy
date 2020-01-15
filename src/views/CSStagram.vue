@@ -10,7 +10,7 @@
           <img :src="post.heart" alt="Coeur" @click.once="liker(post.id)" />
           <p v-if="post.likes <= 100">{{ post.likes }}</p>
           <p v-else>+ de 100 personnes</p>
-          <p>Bonjour tout le monde !!!</p>
+          <p>Bonjour c'est moi!</p>
         </div>
       </div>
     </div>
