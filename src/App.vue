@@ -2,13 +2,19 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/about">About</router-link> |
+      <router-link to="/atelier">Atelier</router-link> |
+      <router-link to="/csstagram">CSStagram</router-link> |
+      <router-link to="/newpost">New Post</router-link>
     </div>
     <router-view />
   </div>
 </template>
 
 <style lang="scss">
+
+@import "./assets/styles/global.scss";
+
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
