@@ -22,4 +22,4 @@ steps:
   inputs:
     sshEndpoint: 'SSH VPS OVH'
     runOptions: 'commands'
-    commands: 'cd /var/www/html/lucasvandenberg && git pull'
+    commands: 'cd /var/www/html/lucasvandenberg && git pull && npm run build'
