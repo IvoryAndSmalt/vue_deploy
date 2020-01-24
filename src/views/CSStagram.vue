@@ -23,7 +23,7 @@
 <script>
 export default {
   mounted() {
-    fetch('https://api.lucasvandenberg.fr/v1/post?page=10', {
+    fetch('https://api.lucasvandenberg.fr/v1/post?page=9', {
       method: 'GET',
       mode: 'cors',
       headers: {
@@ -54,7 +54,7 @@ export default {
       );
     }
   },
-  name: "csstagram"
+  name: "home"
 };
 </script>
 
