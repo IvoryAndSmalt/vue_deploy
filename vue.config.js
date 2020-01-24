@@ -12,6 +12,9 @@ module.exports = {
   // https://www.foobar.com/my-app/
   // then change this to '/my-app/'
   publicPath: '/',
+  pwa: {
+    themeColor: '#ffffff'
+  },
 
   // where to output built files
   outputDir: 'dist',
