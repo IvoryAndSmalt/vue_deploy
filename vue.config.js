@@ -11,7 +11,7 @@ module.exports = {
   // sub-path here. For example, if your app is deployed at
   // https://www.foobar.com/my-app/
   // then change this to '/my-app/'
-  publicPath: '/vue_atelier/ouioui/dist/',
+  publicPath: '/',
 
   // where to output built files
   outputDir: 'dist',
