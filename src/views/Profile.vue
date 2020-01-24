@@ -14,17 +14,8 @@
 </template>
     
 <script>
-import axios from "axios";
 
 export default {
-  //   mounted() {
-  //     axios.get("http://api.lucasvandenberg.fr/v1/post", {
-  //       headers: {
-  //           "Access-Control-Allow-Origin": "*"
-  //         }
-  //       })
-  //       .then(response => (this.posts = response.data.data));
-  //   },
   data: function() {
     return {
       errorStatus: null,
@@ -35,42 +26,11 @@ export default {
     };
   },
   methods: {
-    newPost: function(e) {
-        e.preventDefault();
-      axios.post("https://api.lucasvandenberg.fr/v1/post", {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Accept": "application/json",
-          "Content-type": "application/json"
-        },
-        url: this.urlImage,
-        author_id: 12,
-        title: this.postTitle,
-        description: this.description,
-        likes: 0
-      });
-    }
   },
   name: "profile"
 };
 </script>
 
 <style lang="scss" scoped>
-body * {
-  color: red;
-}
-img {
-  max-width: 400px;
-  height: auto;
-}
-.likes {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.likes img {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-}
+
 </style>
