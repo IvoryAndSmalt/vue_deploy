@@ -2,7 +2,7 @@
   <!-- Une template doit toujours n'avoir qu'une seule balise à la racine -->
   <div class="csstagram">
     <p>Bonjour, je suis la page {{ pageName }}</p>
-    <div class="container">
+    <div class="container cancel">
       <div v-for="post in posts" :key="post.id" class="post">
         <h2>{{ post.titre }}</h2>
         <img :src="post.url" :alt="post.alt" />
@@ -14,35 +14,32 @@
         </div>
       </div>
     </div>
-    <!-- <p v-if="testLogique">A vendre</p> -->
-    <!-- <input type="text" name="jeanmichel" id="jeanmichel" v-model="input">
-    <h1>Voici mon input : {{ input }}</h1>-->
   </div>
 </template>
     
 <script>
 export default {
   mounted() {
-    fetch('https://api.lucasvandenberg.fr/v1/post?page=9', {
-      method: 'GET',
-      mode: 'cors',
+    fetch("https://api.lucasvandenberg.fr/v1/post?page=9", {
+      method: "GET",
+      mode: "cors",
       headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
       }
     })
-  .then((response) => {
-    return response.json();
-  })
-  .then((myJson) => {
-    this.posts = myJson.data;
-  });
+      .then(response => {
+        return response.json();
+      })
+      .then(myJson => {
+        this.posts = myJson.data;
+      });
   },
   data: function() {
     return {
       posts: null,
       errorStatus: null,
-      pageName: "jeanmichel"
+      pageName: "home"
     };
   },
   methods: {
@@ -52,7 +49,7 @@ export default {
           "https://image.flaticon.com/icons/png/512/148/148836.png"),
         this.posts[id].likes++
       );
-    }
+    },
   },
   name: "home"
 };
@@ -63,7 +60,6 @@ body * {
   color: red;
 }
 img {
-  max-width: 300px;
   width: 100%;
   height: auto;
 }

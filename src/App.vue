@@ -13,8 +13,9 @@
     <!-- ONLY DISPLAYED IF ON HOME PAGE -->
     <div v-if="$route.name === 'home'" id="floating" class="fixed">
       <router-link to="/newpost">
-        <div id="plus">+</div>
-        <img id="logo" src="./assets/logo.png" alt="Logo" />
+        <div id="plus">
+          <div id="feather"></div>
+        </div>
       </router-link>
     </div>
     <!-- GENERAL NAV AT THE BOTTOM -->
@@ -31,6 +32,34 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data: function() {
+    return {
+
+    };
+  },
+  mounted() {
+    const self = this;
+    self.banThisShadow();
+    document.addEventListener("scroll", function() {
+      self.banThisShadow();
+    });
+  },
+  methods: {
+    banThisShadow: function() {
+      const topnav = document.querySelector("#topnav");
+      if(scrollY <= 25){
+        topnav.classList.remove("top-shadow");
+      }
+      else{
+        topnav.classList.add("top-shadow");
+      }
+    }
+  }
+};
+</script>
 
 <style lang="scss">
 @import "./assets/styles/global.scss";
@@ -50,6 +79,8 @@
   #topnav {
     top: 0;
     padding: 20px;
+    box-shadow: none;
+    transition: all 0.25s ease-in-out;
     * {
       font-size: 1.5rem;
     }
@@ -74,38 +105,22 @@
     background: transparent;
     box-shadow: none;
     #plus {
-      box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.5);
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      font-size: 2rem;
-      font-weight: bold;
-      color: $blue;
-      background: white;
-      border-radius: 5rem;
       position: absolute;
-      height: 30px;
-      width: 30px;
-      top: -5px;
-      left: -5px;
-      line-height: 1.1;
-      text-indent: 5px;
-      &:active,
-      &:focus,
-      &:hover {
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5),
-          0 10px 10px rgba(0, 0, 0, 0.5);
-      }
-    }
-    #logo {
-      height: 65px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.12), 0 8px 15px rgba(0, 0, 0, 0.24) !important;
+      left: 0;
+      top: 0;
       width: 65px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 6px 6px rgba(0, 0, 0, 0.5);
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      height: 65px;
+      background: rgb(255, 255, 255);
       border-radius: 5rem;
-      &:active,
-      &:focus,
-      &:hover {
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5),
-          0 10px 10px rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      #feather {
+        height: 85%;
+        width: 85%;
+        background: url("/img/icons/feather-pen.png") center center no-repeat;
+        background-size: 80% 80%;
       }
     }
   }
