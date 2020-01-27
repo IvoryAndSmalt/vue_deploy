@@ -64,6 +64,7 @@ body * {
 }
 img {
   max-width: 400px;
+  width: 100%;
   height: auto;
 }
 .likes {
