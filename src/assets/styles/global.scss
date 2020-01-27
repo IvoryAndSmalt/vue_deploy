@@ -1,12 +1,23 @@
 $orange: orange;
 $blue: rgb(80, 80, 255);
+$dark-blue: #2c3e50;
+$darker-blue: darken(#2c3e50, 5%);
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,600&display=swap');
+
+html{
+  scroll-behavior: smooth;
+}
 
 #app {
   font-size: 16px;
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  font-family: "Poppins", sans-serif;
+  color: $dark-blue;
+
+  p{
+    padding-left: 15px;
+    color: $darker-blue;
+    font-size: 0.9rem;
+  }
 
   .cancel{
     padding-left: 0;
@@ -28,6 +39,12 @@ $blue: rgb(80, 80, 255);
     justify-content: space-between;
   }
 
+  .center{
+    text-align: center;
+    display: block;
+    margin: auto;
+  }
+
   .abscenter{
     position: absolute;
     left: 50%;
@@ -35,8 +52,16 @@ $blue: rgb(80, 80, 255);
     transform: translate(-50%, -50%);
   }
 
-  .top-shadow{
+  .round{
+    border-radius: 5rem;
+  }
+
+  .btm-shadow{
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24) !important;
+    transition: all 0.25s ease-in-out;
+  }
+  .top-shadow{
+    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.12), 0 -1px 3px rgba(0, 0, 0, 0.24) !important;
     transition: all 0.25s ease-in-out;
   }
 }

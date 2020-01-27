@@ -17,14 +17,6 @@
 import axios from "axios";
 
 export default {
-  //   mounted() {
-  //     axios.get("http://api.lucasvandenberg.fr/v1/post", {
-  //       headers: {
-  //           "Access-Control-Allow-Origin": "*"
-  //         }
-  //       })
-  //       .then(response => (this.posts = response.data.data));
-  //   },
   data: function() {
     return {
       errorStatus: null,

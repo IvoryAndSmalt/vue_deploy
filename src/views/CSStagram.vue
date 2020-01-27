@@ -1,64 +1,85 @@
 <template>
-  <!-- Une template doit toujours n'avoir qu'une seule balise à la racine -->
   <div class="csstagram">
-    <p>Bonjour, je suis la page {{ pageName }}</p>
+    <p class="mb-1">Bienvenue à l'accueil.</p>
+    <hr class="mb-5" />
     <div class="container cancel">
       <div v-for="post in posts" :key="post.id" class="post">
         <h2>{{ post.titre }}</h2>
         <img :src="post.url" :alt="post.alt" />
         <div class="likes">
-          <img :src="post.heart" alt="Coeur" @click.once="liker(post.id)" />
-          <p v-if="post.likes <= 100">{{ post.likes }}</p>
-          <p v-else>+ de 100 personnes</p>
-          <p>Bonjour c'est moi!</p>
+          <img :src="testlike(post.id)" alt="Coeur" @click.once="liker(post.id)" />
+          <p v-if="post.likes <= 1000">{{ post.likes }} Likes</p>
+          <p v-else>+ de 1000 personnes</p>
         </div>
       </div>
+      <hr class="mt-5"/>
+      <p id="next" @click="suivant">Suivant</p>
     </div>
   </div>
 </template>
-    
 <script>
+
 export default {
   mounted() {
-    fetch("https://api.lucasvandenberg.fr/v1/post?page=9", {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*"
-      }
-    })
-      .then(response => {
-        return response.json();
-      })
-      .then(myJson => {
-        this.posts = myJson.data;
-      });
+    this.loadposts();
+    // this.loadlikes();
   },
   data: function() {
     return {
+      page: 1,
       posts: null,
       errorStatus: null,
-      pageName: "home"
+      pageName: "home",
+      likes: [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ]
     };
   },
   methods: {
-    liker: function(id) {
-      return (
-        (this.posts[id].heart =
-          "https://image.flaticon.com/icons/png/512/148/148836.png"),
-        this.posts[id].likes++
-      );
+    testlike(post){
+      if(this.likes.includes(post)){
+        return "./img/icons/heart_filled.png"
+      }
+      else{
+        return "./img/icons/heart_empty.png"
+      }
     },
+    loadposts: function() {
+      fetch(`https://api.lucasvandenberg.fr/v1/post?page=${this.page}`, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        }
+      })
+        .then(response => {
+          return response.json();
+        })
+        .then(myJson => {
+          this.posts = myJson.data;
+        });
+    },
+    liker: function(id) {
+      return this.posts[id].likes++
+    },
+    suivant: function() {
+      this.page++;
+      this.loadposts();
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
   },
   name: "home"
 };
 </script>
 
 <style lang="scss" scoped>
-body * {
-  color: red;
-}
 img {
   width: 100%;
   height: auto;
@@ -67,10 +88,20 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    transition: all 0.25s ease-in-out;
+  }
 }
-.likes img {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
+
+.post {
+  transition: all 0.25s ease-in-out;
 }
+
+#next{
+  font-weight: 600;
+}
+
 </style>

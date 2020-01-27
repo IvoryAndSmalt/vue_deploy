@@ -11,7 +11,7 @@
       </h1>
     </div>
     <!-- ONLY DISPLAYED IF ON HOME PAGE -->
-    <div v-if="$route.name === 'home'" id="floating" class="fixed">
+    <div v-if="$route.name === 'accueil'" id="floating" class="fixed">
       <router-link to="/newpost">
         <div id="plus">
           <div id="feather"></div>
@@ -36,29 +36,39 @@
 <script>
 export default {
   data: function() {
-    return {
-
-    };
+    return {};
   },
   mounted() {
     const self = this;
     self.banThisShadow();
+    self.banThisBottomShadow();
     document.addEventListener("scroll", function() {
       self.banThisShadow();
+      self.banThisBottomShadow();
     });
   },
   methods: {
     banThisShadow: function() {
       const topnav = document.querySelector("#topnav");
-      if(scrollY <= 25){
-        topnav.classList.remove("top-shadow");
+      if (scrollY <= 25) {
+        topnav.classList.remove("btm-shadow");
+      } else {
+        topnav.classList.add("btm-shadow");
+      }
+    },
+    banThisBottomShadow: function() {
+      const bottomnav = document.querySelector("#nav");
+      if (window.innerHeight + window.scrollY >= document.body.scrollHeight+80) {
+        // you're at the bottom of the page
+        bottomnav.classList.remove("top-shadow");
       }
       else{
-        topnav.classList.add("top-shadow");
+        bottomnav.classList.add("top-shadow");
       }
     }
   }
 };
+
 </script>
 
 <style lang="scss">
@@ -126,9 +136,10 @@ export default {
   }
 
   #nav {
-    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.12), 0 -1px 2px rgba(0, 0, 0, 0.24) !important;
+    box-shadow: none;
     bottom: 0;
     padding: 15px 20px;
+    transition: all 0.25s ease-in-out;
     a {
       font-size: 1.2rem;
       color: rgb(80, 80, 255);

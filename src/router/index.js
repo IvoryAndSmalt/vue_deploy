@@ -9,7 +9,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "home",
+    name: "accueil",
     meta: {
       title: "ouioui - Accueil"
     },
@@ -17,7 +17,7 @@ const routes = [
   },
   {
     path: "/newpost",
-    name: "newpost",
+    name: "créer",
     meta: {
       title: "ouioui - Créer"
     },
@@ -25,7 +25,7 @@ const routes = [
   },
   {
     path: "/profile",
-    name: "profile",
+    name: "profil",
     meta: {
       title: "ouioui - Profil"
     },
