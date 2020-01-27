@@ -63,7 +63,7 @@ body * {
   color: red;
 }
 img {
-  max-width: 400px;
+  max-width: 300px;
   width: 100%;
   height: auto;
 }
