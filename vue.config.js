@@ -13,7 +13,8 @@ module.exports = {
   // then change this to '/my-app/'
   publicPath: '/',
   pwa: {
-    themeColor: '#ffffff'
+    themeColor: '#ffffff',
+    backgroundColor: '#ffffff'
   },
 
   // where to output built files
