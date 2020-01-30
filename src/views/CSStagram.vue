@@ -7,7 +7,7 @@
         <h2>{{ post.titre }}</h2>
         <img :src="post.url" :alt="post.alt" />
         <div class="likes">
-          <img :src="testlike(post.id)" alt="Coeur" @click.once="liker(post.id)" />
+          <img :src="testlike(post.id)" alt="Coeur" @click="liker(post.id)" />
           <p v-if="post.likes <= 1000">{{ post.likes }} Likes</p>
           <p v-else>+ de 1000 personnes</p>
         </div>
@@ -34,9 +34,7 @@ export default {
         1,
         2,
         4,
-        5,
-        6,
-        7
+        5
       ]
     };
   },
@@ -66,7 +64,15 @@ export default {
         });
     },
     liker: function(id) {
-      return this.posts[id].likes++
+      if(!this.likes.includes(id)){
+        // Inclure la requête à l'API pour ajouter le like
+        this.likes.push(id);
+        this.posts[id].likes++
+      }
+      else{
+        this.likes.splice( this.likes.indexOf(id), 1 );
+        this.posts[id].likes--
+      }
     },
     suivant: function() {
       this.page++;

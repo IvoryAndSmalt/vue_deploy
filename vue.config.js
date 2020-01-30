@@ -14,7 +14,6 @@ module.exports = {
   publicPath: '/',
   pwa: {
     themeColor: '#ffffff',
-    backgroundColor: '#ffffff'
   },
 
   // where to output built files
